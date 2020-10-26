@@ -5,18 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "rimraf dist/bundle.*.js && webpack",
     "start": "webpack-dev-server",
     "prod": "-----------------------PROD-----------------------",
-    "build:prod": "rimraf dist/bundle.*.js && npm run build",
     "upload:prod": "aws s3 sync ./dist s3://superant --profile=sample-deploy-s3",
     "invalidate:prod": "aws cloudfront create-invalidation --profile=sample-deploy-s3 --distribution-id E3S2XQDVXY5HAJ --paths / /index.html",
-    "deploy:prod": "npm run build:prod && npm run upload:prod && npm run invalidate:prod",
+    "deploy:prod": "npm run upload:prod && npm run invalidate:prod",
     "dev": "-----------------------DEV-----------------------",
-    "build:dev": "rimraf dist/bundle.*.js && npm run build",
     "upload:dev": "aws s3 sync ./dist s3://superant-dev --profile=sample-deploy-s3",
     "invalidate:dev": "aws cloudfront create-invalidation --profile=sample-deploy-s3 --distribution-id EI8GLQNZYI2N5 --paths / /index.html",
-    "deploy:dev": "npm run build:dev && npm run upload:dev && npm run invalidate:dev"
+    "deploy:dev": "npm run upload:dev && npm run invalidate:dev"
   },
   "author": "",
   "license": "ISC",
