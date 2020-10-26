@@ -41,4 +41,4 @@ jobs:
         run: aws s3 sync ./dist s3://superant-dev
       
       - name: Invalidate CloudFront
-        run: aws cloudfront create-invalidation --profile=sample-deploy-s3 --distribution-id EI8GLQNZYI2N5 --paths / /index.html
+        run: aws cloudfront create-invalidation --distribution-id EI8GLQNZYI2N5 --paths / /index.html
