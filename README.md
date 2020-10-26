@@ -2,6 +2,7 @@
 
 ## 1. Webpack, React Build-Up
 ## 2. AWS 연동 파이프라인 구축
+
 Freenom(무료 도메인) => Route 53 => CloudFront => S3
 <br/>
 Sub : AWS Certificate Manager(ACM) <=> Freenom
