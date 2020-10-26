@@ -39,5 +39,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: | 
-          aws s3 sync ./dist s3://superant-dev
+          aws s3 sync ./dist s3://superant-dev &&
           aws cloudfront create-invalidation --profile=sample-deploy-s3 --distribution-id EI8GLQNZYI2N5 --paths / /index.html
