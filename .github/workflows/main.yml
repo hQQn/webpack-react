@@ -21,7 +21,11 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@${GITHUB_REF##*/}
 
       - name: Current Branch
         run: echo ${GITHUB_REF##*/}
+        
+      - name: npm install
+        run: npm install
+        
