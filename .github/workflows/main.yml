@@ -21,7 +21,7 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@`${GITHUB_REF##*/}`
+      - uses: actions/checkout
 
       - name: Current Branch
         run: echo ${GITHUB_REF##*/}
