@@ -22,6 +22,8 @@ jobs:
 
     steps:
       - uses: actions/checkout
+        with:
+          repository: ''
 
       - name: Current Branch
         run: echo ${GITHUB_REF##*/}
