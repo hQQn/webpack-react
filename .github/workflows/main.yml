@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CI/CD
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -34,9 +34,9 @@ jobs:
       - name: npm run webpack
         run: npm run build
       
-      - name: S3 Deploy
+      - name: S3 Deploy && Invalidate CloudFront
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws s3 sync ./dist s3://superant-dev
+        run: aws s3 sync ./dist s3://superant-dev
+        run: aws cloudfront create-invalidation --profile=sample-deploy-s3 --distribution-id EI8GLQNZYI2N5 --paths / /index.html
