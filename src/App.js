@@ -2,7 +2,7 @@ import React from 'react';
 
 const App = () => (
     <div>
-        GitHubAction Test
+        Development
     </div>
 );
 
